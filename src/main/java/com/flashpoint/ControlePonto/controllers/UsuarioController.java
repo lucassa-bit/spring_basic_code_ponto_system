@@ -46,12 +46,9 @@ public class UsuarioController {
 
     // Criar novo usuario
     @PostMapping
-    public ResponseEntity<String> createNewUsuario(Authentication authentication,
-            @Valid @RequestBody CadastrarUsuarioDTO usuarioDTO)
+    public ResponseEntity<String> createNewUsuario(@Valid @RequestBody CadastrarUsuarioDTO usuarioDTO)
             throws LoginAlreadyExistsException, EncodingPasswordException, UsuarioNaoExisteException,
             AcessoNegadoException {
-        List<TipoUsuario> cargosPermitidos = Arrays.asList(new TipoUsuario[] { TipoUsuario.ADMIN });
-        verificadorPermissoesService.verificarPermissao(authentication.getName(), cargosPermitidos);
 
         if (usuarioDTO.getSenha() == null)
             throw new EncodingPasswordException("Senha possui valor nulo");
