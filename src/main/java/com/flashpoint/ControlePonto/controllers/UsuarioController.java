@@ -60,7 +60,6 @@ public class UsuarioController {
 
     // pegar todos os usuarios
     @GetMapping
-    @ResponseStatus(code = HttpStatus.FOUND)
     public List<UsuarioSendDTO> getAllUsuarios(Authentication authentication)
             throws UsuarioNaoExisteException, AcessoNegadoException {
         List<TipoUsuario> cargosPermitidos = Arrays.asList(new TipoUsuario[] { TipoUsuario.ADMIN });
@@ -71,7 +70,6 @@ public class UsuarioController {
 
     // pegar usuario por id
     @GetMapping("/find")
-    @ResponseStatus(code = HttpStatus.FOUND)
     public UsuarioSendDTO getUsuarioById(Authentication authentication, @RequestParam int id)
             throws UsuarioNaoExisteException, AcessoNegadoException {
         List<TipoUsuario> cargosPermitidos = Arrays.asList(new TipoUsuario[] { TipoUsuario.ADMIN });
